@@ -49,7 +49,6 @@ module.exports = function (babel) {
             }
         },
         post() {
-            console.log(this.count);
             this.store={};
         }
     }
