@@ -1,5 +1,5 @@
 {
-  "name": "easyconsole",
+  "name": "babel-plugin-run-comment-code",
   "version": "1.0.0",
   "description": "convert comments to code",
   "main": "./src/index.js",
