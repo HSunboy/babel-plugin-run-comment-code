@@ -1,6 +1,8 @@
 # Babel-Plugin-Run-Comment-Code
 Run the code in the comments
 
+[![NPM version](https://img.shields.io/npm/v/babel-plugin-run-comment-code.svg?style=flat)](https://npmjs.org/package/babel-plugin-run-comment-code)
+
 ## Example
 ```javascript
 // begin
