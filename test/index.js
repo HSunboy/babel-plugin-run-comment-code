@@ -7,15 +7,16 @@ const code = `
 // begin
 // code>>console.log('begin')
 function a(){
-    // code>> console.log('a')
+    let b = 2;
+    // code>> console.log('a');console.log('end2')
     // a
     let v = 1;
-    // code>> console.log(v)
+    // code>>console.log(v);console.log('end2')
 }
 a();
 // end
-// code>>console.log('end');
+// code>>console.log('end');console.log('end2')
 `
 
-let ast = babelCore.transform(code, { plugins: [plugin]});
+let ast = babelCore.transform(code, { presets: ['@babel/preset-env'], plugins: [plugin]});
 console.log(ast.code)

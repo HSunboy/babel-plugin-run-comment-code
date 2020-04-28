@@ -12,6 +12,7 @@ let str = 'hello world';
 console.log(str);
 
 ↓ ↓ ↓ ↓ ↓ ↓
+
 //begin
 console.log('begin')
 let str = 'hello world';

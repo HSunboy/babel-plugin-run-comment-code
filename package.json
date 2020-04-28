@@ -1,6 +1,6 @@
 {
   "name": "babel-plugin-run-comment-code",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "convert comments to code",
   "main": "./src/index.js",
   "scripts": {
@@ -17,6 +17,7 @@
     "@babel/core": "^7.9.0",
     "@babel/generator": "^7.9.5",
     "@babel/parser": "^7.9.4",
+    "@babel/preset-env": "^7.9.5",
     "@babel/types": "^7.9.5",
     "babel-core": "^6.26.3",
     "babel-traverse": "^6.26.0",

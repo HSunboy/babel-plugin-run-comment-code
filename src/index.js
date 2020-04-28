@@ -1,3 +1,8 @@
+const babelParser= require('@babel/parser');
+function generateCode (code) {
+    const file = babelParser.parse(code);
+    return file.program.body || [];
+}
 module.exports = function (babel) {
     return {
         pre(state) {
@@ -18,7 +23,9 @@ module.exports = function (babel) {
                                 }
                                 if (comment.type == 'CommentLine' && comment.value.indexOf(' code>>') == 0) {
                                     const code = comment.value.replace(/^[ ]code>>/, '').replace('\r\n', '');
-                                    path.insertBefore(babel.parse(code));
+                                    generateCode(code).forEach((node) => {
+                                        path.insertBefore(node);
+                                    })
                                     pluginCtx.store[`${comment.start}_${comment.end}`] = true;
                                     pluginCtx.count = 0;
                                     return null;
@@ -27,14 +34,14 @@ module.exports = function (babel) {
                             }).filter(Boolean);
                         }
                         if (trailingComments) {
-                            const actions = [];
+                            let actions = [];
                             path.node.trailingComments = trailingComments.map((comment) => {
                                 if (pluginCtx.store[`${comment.start}_${comment.end}`]) {
                                     return null;
                                 }
                                 if (comment.type == 'CommentLine' && comment.value.indexOf(' code>>') == 0) {
                                     const code = comment.value.replace(/^[ ]code>>/, '');
-                                    actions.push(babel.parse(code));
+                                    actions = actions.concat(generateCode(code));
                                     pluginCtx.store[`${comment.start}_${comment.end}`] = true;
                                     return null;
                                 }
