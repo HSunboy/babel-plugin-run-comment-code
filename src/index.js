@@ -6,7 +6,6 @@ function generateCode (code) {
 module.exports = function (babel) {
     return {
         pre(state) {
-            this.count = 0;
             this.store = {};
         },
         visitor: {
@@ -27,7 +26,6 @@ module.exports = function (babel) {
                                         path.insertBefore(node);
                                     })
                                     pluginCtx.store[`${comment.start}_${comment.end}`] = true;
-                                    pluginCtx.count = 0;
                                     return null;
                                 }
                                 return comment;
